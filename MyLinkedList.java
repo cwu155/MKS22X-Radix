@@ -52,6 +52,11 @@ public class MyLinkedList{
     }
 
     public String toString(){
+
+      if (length == 0){
+        return "[]";
+      }
+
       String result = "";
       int i = 0;
       Node current = start;
@@ -110,6 +115,17 @@ public class MyLinkedList{
       }
     }
 
+    public Integer removeFront(){
+        Node remove = this.start;
+        if (length == 1){
+          start = null; end = null;
+        } else {
+          start = start.next();
+        }
+        length -= 1;
+        return remove.getData();
+    }
+
     public void extend(MyLinkedList other){
         int thisSize = this.size();
         int otherSize = other.size();
@@ -127,7 +143,10 @@ public class MyLinkedList{
         other.add(-i);
       }
 
-      test.extend(other);
+      for (int i = 0; i < 10; i++){
+        test.removeFront();
+        other.removeFront();
+      }
 
       System.out.println("Test Size: " + test.size());
       System.out.println(test);
