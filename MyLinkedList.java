@@ -1,9 +1,10 @@
-public class MyLinkedList{
+public class MyLinkedList<E>{
   private class Node{
     private Node next, prev;
-    private Integer data;
+    private E data;
 
-    public Node (Integer value, Node start, Node end){
+    @SuppressWarnings("unchecked")
+    public Node (E value, Node start, Node end){
       prev = start;
       next = end;
       data = value;
@@ -20,15 +21,15 @@ public class MyLinkedList{
       public void setPrev(Node other){
         prev = other;
       }
-      public Integer getData(){
+      public E getData(){
         return data;
       }
-      public Integer setData(Integer i){
+      public E setData(E i){
         data = i;
         return data;
       }
       public String toString(){
-        return Integer.toString(data);
+        return "" + data;
       }
     }
 
@@ -82,7 +83,7 @@ public class MyLinkedList{
       return result;
     }
 
-    public boolean add(Integer value){
+    public boolean add(E value){
         Node newNode = new Node(value, start, end);
         Node newEndNode = new Node(value, start, null);
         if (start == null){
@@ -98,7 +99,7 @@ public class MyLinkedList{
     }
 
 
-    public void add(int index, Integer value){
+    public void add(int index, E value){
       if (index > length || index < 0){
         System.out.println("Bad index value!");
       } else if (index == 0){
@@ -115,7 +116,7 @@ public class MyLinkedList{
       }
     }
 
-    public Integer removeFront(){
+    public E removeFront(){
         Node remove = this.start;
         if (length == 1){
           start = null; end = null;
@@ -126,7 +127,7 @@ public class MyLinkedList{
         return remove.getData();
     }
 
-    public void extend(MyLinkedList other){
+    public void extend(MyLinkedList<E> other){
         int thisSize = this.size();
         int otherSize = other.size();
         Node end = this.end;
@@ -136,23 +137,23 @@ public class MyLinkedList{
       }
 
     public static void main(String[] args) {
-      MyLinkedList test = new MyLinkedList();
-      MyLinkedList other = new MyLinkedList();
-      for (int i = 0; i < 10; i++){
-        test.add(i);
-        other.add(-i);
-      }
-
-      for (int i = 0; i < 10; i++){
-        test.removeFront();
-        other.removeFront();
-      }
-
-      System.out.println("Test Size: " + test.size());
-      System.out.println(test);
-      System.out.println("---------------------------");
-      System.out.println("Other Size: " + other.size());
-      System.out.println(other);
+      // MyLinkedList test = new MyLinkedList();
+      // MyLinkedList other = new MyLinkedList();
+      // for (int i = 0; i < 10; i++){
+      //   test.add(i);
+      //   other.add(-i);
+      // }
+      //
+      // for (int i = 0; i < 10; i++){
+      //   test.removeFront();
+      //   other.removeFront();
+      // }
+      //
+      // System.out.println("Test Size: " + test.size());
+      // System.out.println(test);
+      // System.out.println("---------------------------");
+      // System.out.println("Other Size: " + other.size());
+      // System.out.println(other);
 
     }
   }
