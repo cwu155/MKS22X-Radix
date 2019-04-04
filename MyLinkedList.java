@@ -1,5 +1,5 @@
 public class MyLinkedList<E>{
-  private class Node{
+  public class Node{
     private Node next, prev;
     private E data;
 
@@ -69,7 +69,7 @@ public class MyLinkedList<E>{
       return "[" + result + end + "]";
     }
 
-    private Node getNthNode(int index){
+    public Node getNthNode(int index){
       Node current = start;
       Node result = current;
 
@@ -128,32 +128,41 @@ public class MyLinkedList<E>{
     }
 
     public void extend(MyLinkedList<E> other){
-        int thisSize = this.size();
-        int otherSize = other.size();
-        Node end = this.end;
-        end.setNext(other.start);
-        (other.start).setPrev(end);
-        this.length += other.length;
+
+      if (other.length == 0){
+        return;
       }
 
+      if (length == 0) {
+       start = other.start;
+      } else {
+        int thisSize = this.size();
+        int otherSize = other.size();
+        end.setNext(other.start);
+        (other.start).setPrev(end);
+      }
+        this.end = other.end;
+        this.length += other.length;
+    }
+
     public static void main(String[] args) {
-      // MyLinkedList test = new MyLinkedList();
-      // MyLinkedList other = new MyLinkedList();
-      // for (int i = 0; i < 10; i++){
-      //   test.add(i);
-      //   other.add(-i);
-      // }
-      //
-      // for (int i = 0; i < 10; i++){
-      //   test.removeFront();
-      //   other.removeFront();
-      // }
-      //
-      // System.out.println("Test Size: " + test.size());
-      // System.out.println(test);
-      // System.out.println("---------------------------");
-      // System.out.println("Other Size: " + other.size());
-      // System.out.println(other);
+      MyLinkedList test = new MyLinkedList();
+      MyLinkedList other = new MyLinkedList();
+
+      System.out.println("Test: " + test);
+      System.out.println("Other: " + other);
+
+
+      for (int i = 0; i < 1; i++){
+        test.removeFront();
+        //other.removeFront();
+      }
+
+      System.out.println("Test Size: " + test.size());
+      System.out.println(test);
+      System.out.println("---------------------------");
+      System.out.println("Other Size: " + other.size());
+      System.out.println(other);
 
     }
   }
