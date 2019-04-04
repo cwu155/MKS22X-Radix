@@ -1,10 +1,7 @@
 import java.util.*;
 
 public class Radix{
-  // @SuppressWarnings("unchecked")
-  // public static MyLinkedList<Integer> [] buckets = new MyLinkedList[20];
-  // public static MyLinkedList<Integer> temp = new MyLinkedList<Integer>();
-  public static int digit,max,total;
+  public static int max,digit;
 
   public static int maxDigits(int[] data){
     for (int i = 0; i < data.length; i++){
@@ -12,9 +9,7 @@ public class Radix{
         max = Math.abs(data[i]);
       }
     }
-
-     max = Integer.toString(max).length();
-    //max = ((int) Math.log10(max) + 1);
+    max = Integer.toString(max).length();
     return max;
   }
 
@@ -86,14 +81,8 @@ public class Radix{
           }
         }
         System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
-        total += qtime/btime;
-
       }
       System.out.println();
     }
-    System.out.println("Testing non public static variable");
-    System.out.println("Avg: " + total / 21);
-    //System.out.println((48723/100) % 10);
-
   }
 }

@@ -53,7 +53,6 @@ public class MyLinkedList<E>{
     }
 
     public String toString(){
-
       if (length == 0){
         return "[]";
       }
@@ -69,20 +68,6 @@ public class MyLinkedList<E>{
       return "[" + result + end + "]";
     }
 
-    public Node getNthNode(int index){
-      Node current = start;
-      Node result = current;
-
-      for (int i = 0; i < length; i++){
-        if (i == index){
-          result = current;
-        } else {
-          current = current.next();
-        }
-      }
-      return result;
-    }
-
     public boolean add(E value){
         Node newNode = new Node(value, start, end);
         Node newEndNode = new Node(value, start, null);
@@ -96,24 +81,6 @@ public class MyLinkedList<E>{
         }
         length += 1;
         return true;
-    }
-
-
-    public void add(int index, E value){
-      if (index > length || index < 0){
-        System.out.println("Bad index value!");
-      } else if (index == 0){
-        Node newNode = new Node (value, null, start);
-        start = newNode;
-        length += 1;
-      } else {
-        Node original = this.getNthNode(index);
-        Node originalPrev = this.getNthNode(index-1);
-        Node newNode = new Node(value, originalPrev, original);
-        original.setPrev(newNode);
-        originalPrev.setNext(newNode);
-        length += 1;
-      }
     }
 
     public E removeFront(){
